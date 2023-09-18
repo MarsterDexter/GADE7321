@@ -10,9 +10,9 @@ ChessBoard* chessboard;
 TextureManager* texturemanager;
 vec3 camArray[3]
 {
-    vec3(10, 10, 10),
-    vec3(-10, 5, 50),
-    vec3(-5, 100, 0),
+    vec3(-10, 10, -10),
+    vec3(-10, 5, 10),
+    vec3(-10, 5, -10),
 };
 
 int currentCam;

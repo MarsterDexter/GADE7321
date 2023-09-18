@@ -12,10 +12,15 @@ class ChessBoard
 	TextureCube* CCube[10][10];
 	int sizex, sizey;
 
-public:
+	//__Randomise--Y--Heught//
+	public:
 	ChessBoard(int x, int y);
 	~ChessBoard();
+	float RandomNum(float min, float max);
+	//__Randomise--Y--Heught//
 
+
+	//__Access--Manager__//
 	void step(TextureManager* texM);
 };
 

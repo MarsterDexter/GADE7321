@@ -1,4 +1,6 @@
 #include "ChessBoard.h"
+#include <random>
+
 
 ChessBoard::ChessBoard(int x, int y)
 {
@@ -10,6 +12,11 @@ ChessBoard::ChessBoard(int x, int y)
 		for (int y = 0; y < sizey; y++)
 		{
 			CCube[x][y] = new TextureCube();
+
+
+			
+
+			CCube[x][y]->SetScale(vec3(1, RandomNum(0.5F, 1), 1));
 
 		}
 	}
@@ -26,6 +33,14 @@ ChessBoard::~ChessBoard()
 
 		}
 	}
+}
+
+float ChessBoard::RandomNum(float min, float max)
+{
+	std::random_device randomDev;
+	std::uniform_int_distribution<int> unifInt_Dis(min, max);
+	
+	return unifInt_Dis(randomDev);
 }
 
 void ChessBoard::step(TextureManager* texM)
