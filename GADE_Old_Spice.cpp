@@ -11,7 +11,7 @@ TextureManager* texturemanager;
 vec3 camArray[3]
 {
     vec3(-10, 10, -10),
-    vec3(-10, 5, 10),
+    vec3(10, 5, 10),
     vec3(-10, 5, -10),
 };
 
@@ -33,6 +33,7 @@ void Timer(int) {
 
 void Display() {
 
+  
     glClear(GL_COLOR_BUFFER_BIT| GL_DEPTH_BUFFER_BIT);
   //  glRotatef(30,1,1,0);
     chessboard->step(texturemanager);
@@ -74,7 +75,6 @@ void CameraSwitch(unsigned char key, int x, int y )
          0, 1, 0
      );
 
-    glClearColor(3 / 255, 252 / 255, 221 / 255, 1);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
     
@@ -85,10 +85,13 @@ void CameraSwitch(unsigned char key, int x, int y )
 
 void Init() {
 
+
+
     //__Camera__//
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     gluPerspective(60, (WIDTH / HEIGHT), 0.1, 1000);
+    glClearColor(207.0f / 255, 52.0f/ 255, 52.0f/ 255, 1);
     gluLookAt
     (
         0, 10, -10,
@@ -98,6 +101,8 @@ void Init() {
     //glClearColor(3/255,252/255,221/255,1);
     //  glMatrixMode(GL_MODELVIEW);
     // glLoadIdentity();
+
+
 
     //__Camera__//
     

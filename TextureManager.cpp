@@ -3,19 +3,18 @@
 
 using namespace std;
 
-//use game obejct class - extend it to create terrain game object and in there load heigthmap texture 
+//__Load--Height--Map__// 
 
-//add more textures here for applying to 3D models
 TextureManager::TextureManager()
 {
-
-	textures.insert({ "black", new Texture("Textures/black.png") });
-	textures.insert({ "white", new Texture("Textures/white.png") });
+	//__Access--Texture--Folder--Referencing--The--PNG's__//
+	textures.insert({ "black", new Texture("Textures/black.png") }); //__Black--Texture__//
+	textures.insert({ "white", new Texture("Textures/white.png") });//__White--Texture__//
+	textures.insert({ "heightMap", new Texture("Textures/heightMap.png") }); //__Height--Map__//
 }
 
 TextureManager::~TextureManager()
 {	
-	//freeing up memeory to avoid memory leaks
 	map<string, Texture*>::iterator it;
 
 	for (it = textures.begin(); it != textures.end(); it++)
@@ -28,7 +27,7 @@ void TextureManager::useTexture(string textureName)
 {
 	if (!textures.count(textureName))
 	{
-		cout << "WARNING: Texture does not exist!" << endl;
+		cout << "Not available" << endl;
 		return;
 	}
 
