@@ -10,18 +10,18 @@ using namespace std;
 class TextureManager
 {
 	public:
-		//load all textures
+		//__loads--All--Textures__//
 		TextureManager();
-		//destructor
+
+		//__Destructs--"TextureManager"__//
 		~TextureManager();
 
-		//specify which texture to use for what geometry 
+		//__Specify--Which--Texture--To--Use__//
 		void useTexture(string textureName);
 
 		Texture* getTexture(string textureName);
 
 	private:
-		//after we load them we store them here
 		map<string, Texture*> textures;
 };
 

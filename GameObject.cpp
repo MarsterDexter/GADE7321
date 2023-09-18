@@ -36,10 +36,9 @@ void GameObject::draw()
 {
 	glEnable(GL_DEPTH_TEST);
 
-	//saves cuurent state we at
+
 	glPushMatrix();
 	{
-		//translating where we want to draw the geometry - then revert back to state before we drew
 		glTranslatef(position.x, position.y, position.z);
 
 		glRotatef(rotation.x, 1, 0, 0);
@@ -53,7 +52,6 @@ void GameObject::draw()
 		
 	
 	}
-	//reverts back to original state
 	glPopMatrix();
 	
 }
@@ -64,26 +62,26 @@ void GameObject::drawGeometry()
 
 void GameObject::drawOrigin()
 {
-	//draw on top over everything 
+	//_Draw--On--Top--Over--Everything__//
 	glDisable(GL_DEPTH_TEST);
 
 	glBegin(GL_LINES);
 	{
-		//x axis - red
+		//__Sets--X--To--Red__//
 		glColor3f(1, 0, 0);
-		//at origin
+		
 		glVertex3f(0, 0, 0);
 		glVertex3f(originSize, 0, 0);
 
-		//y axis - green
+		//__Sets--Y--To--Green__//
 		glColor3f(0, 1, 0);
-		//at origin
+		
 		glVertex3f(0, 0, 0);
 		glVertex3f(0, originSize, 0);
 
-		//z axis - blue
+		//__Sets--Z--To--Blue__//
 		glColor3f(0, 0, 1);
-		//at origins
+		
 		glVertex3f(0, 0, 0);
 		glVertex3f(0, 0, originSize);
 
@@ -92,7 +90,6 @@ void GameObject::drawOrigin()
 	}
 	glEnd();
 
-	//x cone
 	glPushMatrix();
 	{
 		glColor3f(1, 0, 0);
@@ -105,7 +102,7 @@ void GameObject::drawOrigin()
 
 	glEnable(GL_DEPTH_TEST);
 
-	//y cone
+	
 	glPushMatrix();
 	{
 		glColor3f(0, 1, 0);
@@ -116,7 +113,7 @@ void GameObject::drawOrigin()
 	}
 	glPopMatrix();
 
-	//z cone
+	
 	glPushMatrix();
 	{
 		glColor3f(0, 0, 1);

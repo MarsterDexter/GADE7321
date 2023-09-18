@@ -2,7 +2,7 @@
 
 struct Pixel
 {
-	//information for the Pixels- storing the colours (RGB) and transparency (alpha)
+	//__Sets--RGB--Colors--Alpha__//
 	float r;
 	float g;
 	float b;

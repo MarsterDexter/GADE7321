@@ -1,7 +1,9 @@
 #include "ChessBoard.h"
+#include "GL\freeglut.h"
 #include <random>
 
-
+GameObject* chessBoarder;
+//__Creates--ChessBoard--And--Size__//
 ChessBoard::ChessBoard(int x, int y)
 {
 	this->sizex = x;
@@ -11,16 +13,34 @@ ChessBoard::ChessBoard(int x, int y)
 	{
 		for (int y = 0; y < sizey; y++)
 		{
-			CCube[x][y] = new TextureCube();
-
-
 			
+			CCube[x][y] = new TextureCube();
 
 			CCube[x][y]->SetScale(vec3(1, RandomNum(0.5F, 1), 1));
 
+			//CCube[x][y]->setPosition(vec3(0, 0, 0));
 		}
 	}
 
+	
+	
+	
+}
+
+void ChessBoard::ChessBoarder() 
+{
+	for (int x = 0; x < sizex; x++)
+	{
+		for (int y = 0; y < sizey; y++)
+		{
+
+			chessBoarder = new GameObject();
+			glColor3f(0, 0, 0);
+			chessBoarder->SetScale(vec3(9.0f, 0.5f, 9.0f));
+			chessBoarder->setPosition(vec3(0, 0, 0));
+		}
+	}
+	
 }
 
 ChessBoard::~ChessBoard()
@@ -35,6 +55,7 @@ ChessBoard::~ChessBoard()
 	}
 }
 
+//__Randomises--Height__//
 float ChessBoard::RandomNum(float min, float max)
 {
 	std::random_device randomDev;
@@ -42,6 +63,7 @@ float ChessBoard::RandomNum(float min, float max)
 	
 	return unifInt_Dis(randomDev);
 }
+//__Randomises--Height__//
 
 void ChessBoard::step(TextureManager* texM)
 {

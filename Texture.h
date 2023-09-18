@@ -5,22 +5,24 @@
 class Texture
 {
 	public:
-		//height map / texture - desired channels = 3 is RGB etc
+		//__HeightMap--Colors__//
 		Texture(const char* path, int desiredChannels = 4);
 
-		//destructor
+		
+		//__Deconstructor(Destructor)--"Textures"__//
 		~Texture();
 
-		//use this texture and what we draw after will hahve etxture on it
+		//__Sets--X--Y__//
 		void use();
 		Pixel getPixelAt(int x, int y);
 
-		//width and height of texture
+		//__Gets--Height--Width--Of--Texture__//
 		int getWidth();
 		int getHeight();
 
 	private:
-		//storing image data in char array
+
+		//__Sotes--Image--In--Char--Array__//
 		unsigned char* image;
 
 		int width;
@@ -28,10 +30,10 @@ class Texture
 		int channels;
 		int desiredChannels;
 
-		//tells us if the image is loaded already
+		//__Tells--Us--If--The--Image--Is--Loaded--Already__//
 		bool loaded = false;
 
-		//loads texture into memeory
+		//__Loads__Texture__Into__Memeory__//
 		void loadTexture(const char* path);
 
 };

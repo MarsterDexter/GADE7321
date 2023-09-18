@@ -11,14 +11,14 @@ TextureManager* texturemanager;
 vec3 camArray[3]
 {
     vec3(-10, 10, -10),
-    vec3(10, 5, 10),
+    vec3(30, 5, 1),
     vec3(-10, 5, -10),
 };
 
 int currentCam;
 
-const int   WIDTH = 800; //Screen size
-const int   HEIGHT = 600; //Screen size
+const int   WIDTH = 800; //__Screen--Size__//
+const int   HEIGHT = 800; //__Screen--Size__//
 int screenWidth;
 int screenHeight;
 
@@ -35,7 +35,7 @@ void Display() {
 
   
     glClear(GL_COLOR_BUFFER_BIT| GL_DEPTH_BUFFER_BIT);
-  //  glRotatef(30,1,1,0);
+  //  glRotatef(30,1,1,0); Rotates
     chessboard->step(texturemanager);
 
     glutSwapBuffers();
@@ -94,7 +94,7 @@ void Init() {
     glClearColor(207.0f / 255, 52.0f/ 255, 52.0f/ 255, 1);
     gluLookAt
     (
-        0, 10, -10,
+        -10, 10, -10,
         0, 0, 0,
         0, 1, 0
     );
@@ -108,7 +108,7 @@ void Init() {
     
    
     
-    glutKeyboardFunc(CameraSwitch);
+    glutKeyboardFunc(CameraSwitch); //__Gets--KeyBoard--InPut__//
     chessboard = new ChessBoard(8,8);
     texturemanager = new TextureManager();
 }

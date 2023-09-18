@@ -4,13 +4,15 @@
 
 using namespace glm;
 
+
+//__Draws--Geometry--For--CCubes__//
 void TextureCube::drawGeometry() 
 {
     float s = 0.5F;
 
     glBegin(GL_QUADS); 
     {
-        //front face
+        //__Front--Face__//
         glColor3f(1, 1, 1);
         glTexCoord2f(0, 0);
         glVertex3f(-0.5, -0.5, 0.5);
@@ -24,7 +26,7 @@ void TextureCube::drawGeometry()
         glTexCoord2f(0, 1);
         glVertex3f(-0.5, 0.5, 0.5);
 
-        //back face
+        //__Back--Face__//
         glTexCoord2f(0, 0);
         glVertex3f(0.5, -0.5, -0.5);
 
@@ -37,7 +39,7 @@ void TextureCube::drawGeometry()
         glTexCoord2f(0, 1);
         glVertex3f(0.5, 0.5, -0.5);
 
-        //left face
+        //__Left--Face__//
         glTexCoord2f(0, 0);
         glVertex3f(-0.5, -0.5, -0.5);
 
@@ -50,7 +52,7 @@ void TextureCube::drawGeometry()
         glTexCoord2f(0, 1);
         glVertex3f(-0.5, 0.5, -0.5);
 
-        //right face
+        //__Right--Face__//
         glTexCoord2f(0, 0);
         glVertex3f(0.5, -0.5, 0.5);
 
@@ -63,7 +65,7 @@ void TextureCube::drawGeometry()
         glTexCoord2f(0, 1);
         glVertex3f(0.5, 0.5, 0.5);
 
-        //top face
+        //__Top--Face__//
         glTexCoord2f(0, 0);
         glVertex3f(-0.5, 0.5, 0.5);
 
@@ -76,7 +78,7 @@ void TextureCube::drawGeometry()
         glTexCoord2f(0, 1);
         glVertex3f(-0.5, 0.5, -0.5);
 
-        //bottom face
+        //__Bottom--Face__//
         glTexCoord2f(0, 0);
         glVertex3f(-0.5, -0.5, -0.5);
 

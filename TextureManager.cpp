@@ -7,7 +7,7 @@ using namespace std;
 
 TextureManager::TextureManager()
 {
-	//__Access--Texture--Folder--Referencing--The--PNG's__//
+	//__Access--Texture--Folder--Referencing--The--PNG's--Name__//
 	textures.insert({ "black", new Texture("Textures/black.png") }); //__Black--Texture__//
 	textures.insert({ "white", new Texture("Textures/white.png") });//__White--Texture__//
 	textures.insert({ "heightMap", new Texture("Textures/heightMap.png") }); //__Height--Map__//

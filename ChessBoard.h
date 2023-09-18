@@ -8,9 +8,11 @@ using namespace glm;
 
 class ChessBoard
 {
-
+	//__Sets--ChessBoard--In--An--Array__//
 	TextureCube* CCube[10][10];
-	int sizex, sizey;
+	int sizex, sizey, sizeb;
+	//__Sets--ChessBoard--In--An--Array__//
+
 
 	//__Randomise--Y--Heught//
 	public:
@@ -19,7 +21,7 @@ class ChessBoard
 	float RandomNum(float min, float max);
 	//__Randomise--Y--Heught//
 
-
+	void ChessBoarder();
 	//__Access--Manager__//
 	void step(TextureManager* texM);
 };
