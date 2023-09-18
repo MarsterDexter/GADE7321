@@ -32,7 +32,7 @@ vec3 GameObject::normalised()
 	return vec3(x, y, z);
 }
 
-void GameObject::draw()
+void GameObject::draw()//__DrawMethod--Draws--Verticies__//
 {
 	glEnable(GL_DEPTH_TEST);
 

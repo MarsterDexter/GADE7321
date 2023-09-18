@@ -3,6 +3,7 @@
 #include <random>
 
 GameObject* chessBoarder;
+
 //__Creates--ChessBoard--And--Size__//
 ChessBoard::ChessBoard(int x, int y)
 {
@@ -18,7 +19,7 @@ ChessBoard::ChessBoard(int x, int y)
 
 			CCube[x][y]->SetScale(vec3(1, RandomNum(0.5F, 1), 1));
 
-			//CCube[x][y]->setPosition(vec3(0, 0, 0));
+			
 		}
 	}
 
@@ -27,7 +28,7 @@ ChessBoard::ChessBoard(int x, int y)
 	
 }
 
-void ChessBoard::ChessBoarder() 
+void ChessBoard::ChessBoarder()					//__ChessBoarder__//
 {
 	for (int x = 0; x < sizex; x++)
 	{
@@ -43,7 +44,7 @@ void ChessBoard::ChessBoarder()
 	
 }
 
-ChessBoard::~ChessBoard()
+ChessBoard::~ChessBoard()				//__ChessBoarder--Deconstructor__//
 {
 	for (int x = 0; x < sizex; x++)
 	{
@@ -53,6 +54,12 @@ ChessBoard::~ChessBoard()
 
 		}
 	}
+
+	chessBoarder = new GameObject();
+	glColor3f(0, 0, 0);
+	chessBoarder->SetScale(vec3(9.0f, 0.5f, 9.0f));
+	chessBoarder->setPosition(vec3(0, 0, 0));
+
 }
 
 //__Randomises--Height__//

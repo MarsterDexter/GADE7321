@@ -11,7 +11,7 @@ TextureManager* texturemanager;
 vec3 camArray[3]
 {
     vec3(-10, 10, -10),
-    vec3(30, 5, 1),
+    vec3(30, -90, 1),
     vec3(-10, 5, -10),
 };
 
@@ -35,7 +35,6 @@ void Display() {
 
   
     glClear(GL_COLOR_BUFFER_BIT| GL_DEPTH_BUFFER_BIT);
-  //  glRotatef(30,1,1,0); Rotates
     chessboard->step(texturemanager);
 
     glutSwapBuffers();
@@ -83,9 +82,7 @@ void CameraSwitch(unsigned char key, int x, int y )
         
 }
 
-void Init() {
-
-
+void Init() {//__Initalisation__//
 
     //__Camera__//
     glMatrixMode(GL_PROJECTION);
@@ -98,12 +95,6 @@ void Init() {
         0, 0, 0,
         0, 1, 0
     );
-    //glClearColor(3/255,252/255,221/255,1);
-    //  glMatrixMode(GL_MODELVIEW);
-    // glLoadIdentity();
-
-
-
     //__Camera__//
     
    
@@ -123,7 +114,7 @@ int main(int argc, char * argv[])
     screenHeight = glutGet(GLUT_SCREEN_HEIGHT);
     glutInitWindowPosition((screenWidth- WIDTH)/2, (screenHeight-HEIGHT)/2);
     glutCreateWindow("OldSpice_Game_Engine_Chess");
-    Init(); //__Initalizing--gameObjects(Awake method)__//
+    Init();                                                     //__Initalizing--gameObjects(Awake method)__//
     glutDisplayFunc(Display);
     glutTimerFunc(0,Timer,0);
     glutMainLoop();

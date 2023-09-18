@@ -3,7 +3,7 @@
 #include <iostream>
 #include "stb/stb_image.h"
 
-Texture::Texture(const char* path, int desiredChannels)
+Texture::Texture(const char* path, int desiredChannels) //__Loads--Textures__//
 {
 	this->desiredChannels = desiredChannels;
 	loadTexture(path);

@@ -16,7 +16,7 @@ class GameObject
 		void drawOrigin();
 
 	public:
-		//method for setting position
+	
 		void setPosition(vec3 position);
 		void setRotation(vec3 rotation);
 		void SetScale(vec3 scale);
