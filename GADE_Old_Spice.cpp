@@ -1,3 +1,4 @@
+#include <GL/glew.h>
 #include <iostream>
 #include "gl/freeglut.h"
 #include "ChessBoard.h"
@@ -5,7 +6,10 @@
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb/stb_image.h"
 #include "glm/glm.hpp"
+#include "Terrain.h"
 
+
+Terrain* terrain;
 ChessBoard* chessboard;
 TextureManager* texturemanager;
 vec3 camArray[3]
@@ -33,9 +37,10 @@ void Timer(int) {
 
 void Display() {
 
-  
+    
     glClear(GL_COLOR_BUFFER_BIT| GL_DEPTH_BUFFER_BIT);
     chessboard->step(texturemanager);
+    terrain->draw();
 
     glutSwapBuffers();
     
@@ -97,11 +102,12 @@ void Init() {//__Initalisation__//
     );
     //__Camera__//
     
-   
     
     glutKeyboardFunc(CameraSwitch); //__Gets--KeyBoard--InPut__//
     chessboard = new ChessBoard(8,8);
     texturemanager = new TextureManager();
+
+    terrain = new Terrain(texturemanager->getTexture("heightMap"), 50, 5);
 }
 
 int main(int argc, char * argv[])
@@ -123,4 +129,5 @@ int main(int argc, char * argv[])
 void cleanUp() {
     delete texturemanager;
     delete chessboard;
+    delete terrain;
 }

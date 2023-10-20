@@ -8,22 +8,22 @@ class GameObject
 
 	float originSize = 1.0f;
 
-	private:
-		vec3 position;
-		vec3 rotation;
-		vec3 scale = vec3(1,1,1);
-		virtual void drawGeometry();
-		void drawOrigin();
+private:
+	vec3 position;
+	vec3 rotation;
+	vec3 scale = vec3(1, 1, 1);
+	virtual void drawGeometry();
+	void drawOrigin();
 
-	public:
-	
-		void setPosition(vec3 position);
-		void setRotation(vec3 rotation);
-		void SetScale(vec3 scale);
-		vec3 getPosition();
-		vec3 normalised();
-		void draw();
-			
+public:
+
+	void setPosition(vec3 position);
+	void setRotation(vec3 rotation);
+	void SetScale(vec3 scale);
+	vec3 getPosition();
+	vec3 normalised();
+	void draw();
+
 
 
 };
