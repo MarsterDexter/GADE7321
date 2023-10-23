@@ -7,6 +7,7 @@
 #include "stb/stb_image.h"
 #include "glm/glm.hpp"
 #include "Terrain.h"
+#include <math.h>
 
 
 Terrain* terrain;
@@ -108,6 +109,7 @@ void Init() {//__Initalisation__//
     texturemanager = new TextureManager();
 
     terrain = new Terrain(texturemanager->getTexture("heightMap"), 50, 5);
+    terrain->setPosition(vec3(0,-5,-20));
 }
 
 int main(int argc, char * argv[])

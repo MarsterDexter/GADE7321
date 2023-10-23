@@ -12,7 +12,7 @@ void Terrain::drawGeometry()
 {
     float w = heightMap->getWidth();
     float h = heightMap->getHeight();
-
+    
     glTranslatef(-size / 2.0f, 0, -height / 2.0f);
     for (int y = 0; y < h - 1; y++)
     {
@@ -57,6 +57,7 @@ void Terrain::drawGeometry()
             glEnd();
 
         }
+        
     }
 
 
