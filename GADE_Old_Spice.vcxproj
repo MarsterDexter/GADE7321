@@ -142,7 +142,9 @@
     <ClCompile Include="ChessBoard.cpp" />
     <ClCompile Include="GADE_Old_Spice.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="King.cpp" />
     <ClCompile Include="Pawn.cpp" />
+    <ClCompile Include="PrimativeGameObject.cpp" />
     <ClCompile Include="Terrain.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TextureCube.cpp" />
@@ -151,8 +153,10 @@
   <ItemGroup>
     <ClInclude Include="ChessBoard.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="King.h" />
     <ClInclude Include="Pawn.h" />
     <ClInclude Include="Pixel.h" />
+    <ClInclude Include="PrimativeGameObject.h" />
     <ClInclude Include="Terrain.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TextureCube.h" />
