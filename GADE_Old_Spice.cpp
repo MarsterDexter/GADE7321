@@ -8,15 +8,19 @@
 #include "glm/glm.hpp"
 #include "Terrain.h"
 #include <math.h>
+#include "King.h"
+#include "Queen.h"
 
 
+King* king;
+Queen* queen;
 Terrain* terrain;
 ChessBoard* chessboard;
 TextureManager* texturemanager;
 vec3 camArray[3]
 {
     vec3(-10, 10, -10),
-    vec3(30, -90, 1),
+    vec3(20, 10, 1),
     vec3(-10, 5, -10),
 };
 
@@ -42,6 +46,10 @@ void Display() {
     glClear(GL_COLOR_BUFFER_BIT| GL_DEPTH_BUFFER_BIT);
     chessboard->step(texturemanager);
     terrain->draw();
+
+
+    king->Draw();
+    queen->Draw();
 
     glutSwapBuffers();
     
@@ -103,7 +111,15 @@ void Init() {//__Initalisation__//
     );
     //__Camera__//
     
-    
+
+
+    king = new King;
+    king->SetPosition(-1, 1, 1);
+
+    queen = new Queen;
+    queen->SetPosition(-1, 1, 2);
+
+
     glutKeyboardFunc(CameraSwitch); //__Gets--KeyBoard--InPut__//
     chessboard = new ChessBoard(8,8);
     texturemanager = new TextureManager();

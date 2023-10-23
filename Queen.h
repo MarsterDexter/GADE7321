@@ -1,7 +1,7 @@
 #pragma once
 #include "PrimativeGameObject.h"
 
-class King : public PrimativeGameObject
+class Queen : public PrimativeGameObject
 {
 private:
 	vec3 Scale;
@@ -9,4 +9,5 @@ public:
 	void DrawGeometry() override;
 
 };
+
 

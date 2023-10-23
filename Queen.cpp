@@ -1,14 +1,12 @@
-#include "King.h"
+#include "Queen.h"
+#include "Queen.h"
 #include "PrimativeGameObject.h"
 #include <GL/freeglut.h>
 #include <GL/gl.h>
 #include <iostream>
 
-
-void King::DrawGeometry()
+void Queen::DrawGeometry()
 {
-	glColor3f(0, 0, 1);
-
 	//__Cone__//
 
 	glRotatef(-90, 1, 0, 0);
@@ -25,8 +23,8 @@ void King::DrawGeometry()
 
 	//__Triangle__//
 	glTranslatef(0, 0, 0.5f);
-	glutSolidSphere(0.2f, 10, 10);
+	glutSolidCube(0.5f);
+
+
 
 }
-
-

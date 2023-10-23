@@ -145,6 +145,7 @@
     <ClCompile Include="King.cpp" />
     <ClCompile Include="Pawn.cpp" />
     <ClCompile Include="PrimativeGameObject.cpp" />
+    <ClCompile Include="Queen.cpp" />
     <ClCompile Include="Terrain.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TextureCube.cpp" />
@@ -157,6 +158,7 @@
     <ClInclude Include="Pawn.h" />
     <ClInclude Include="Pixel.h" />
     <ClInclude Include="PrimativeGameObject.h" />
+    <ClInclude Include="Queen.h" />
     <ClInclude Include="Terrain.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TextureCube.h" />
