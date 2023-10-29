@@ -12,11 +12,18 @@
 #include "King.h"
 #include "Queen.h"
 #include "Pawn.h"
+#include "Bishop.h"
+#include "Rook.h"
 
 
 //__White--Peices__//
 King* wking;
 Queen* wqueen;
+Bishop* wbishop01;
+Bishop* wbishop02;
+Rook* wrook01;
+Rook* wrook02;
+
 //__WPawn__//
 Pawn* wpawn00;
 Pawn* wpawn01;
@@ -32,6 +39,8 @@ Pawn* wpawn07;
 //__Black--Peices__//
 King* bking;
 Queen* bqueen;
+Bishop* bbishop01;
+Bishop* bbishop02;
 //__BPawn__//
 Pawn* bpawn00;
 Pawn* bpawn01;
@@ -81,7 +90,10 @@ void Display() {
     //__White--Peices__//
     wking->Draw();
     wqueen->Draw();
-
+    wbishop01->Draw();
+    wbishop02->Draw();
+    wrook01->Draw();
+    wrook02->Draw();
     //__WPawn__//
     wpawn00->Draw();
     wpawn01->Draw();
@@ -97,7 +109,8 @@ void Display() {
     //__Black--Peices__//
     bking->Draw();
     bqueen->Draw();
-
+    bbishop01->Draw();
+    bbishop02->Draw();
     //__BPawn__//
     bpawn00->Draw();
     bpawn01->Draw();
@@ -180,6 +193,18 @@ void Init() {//__Initalisation__//
     wqueen = new Queen;
     wqueen->SetPosition(-1, 0.5f, 2);
 
+    wbishop01 = new Bishop;
+    wbishop01->SetPosition(-1, 0.5f, 3);
+
+    wbishop02 = new Bishop;
+    wbishop02->SetPosition(-1, 0.5f, 0);
+
+    wrook01 = new Rook;
+    wrook01->SetPosition(-1, 0.5f, -1);
+
+    wrook02 = new Rook;
+    wrook02->SetPosition(-1, 0.5f, 7);
+
     //__WPawn__//
     wpawn00 = new Pawn;
     wpawn00->SetPosition(1,0.5f,0);
@@ -213,8 +238,15 @@ void Init() {//__Initalisation__//
 
     bqueen = new Queen;
     bqueen->SetPosition(7, 0.5f, 4);
-    //__BPawn__//
 
+    bbishop01 = new Bishop;
+    bbishop01->SetPosition(7,3,3);
+
+    bbishop02 = new Bishop;
+    bbishop02->SetPosition(7, 3, 6);
+
+
+    //__BPawn__//
     bpawn00 = new Pawn;
     bpawn00->SetPosition(6, 0.5f, 0);
 
@@ -275,6 +307,10 @@ void cleanUp() {
     //__White--Peices__//
     delete wking;
     delete wqueen;
+    delete wbishop01;
+    delete wbishop02;
+    delete wrook01;
+    delete wrook02;
     //__WPawn__//
     delete wpawn00;
     delete wpawn01;
@@ -291,6 +327,8 @@ void cleanUp() {
     //__Black--Peices__//
     delete bqueen;
     delete bking;
+    delete bbishop01;
+    delete bbishop02;
     //__BPawn__//
     delete bpawn00;
     delete bpawn01;

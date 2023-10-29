@@ -48,16 +48,10 @@
     <ClCompile Include="Queen.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CubePrm.cpp">
+    <ClCompile Include="Bishop.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CylinderPrm.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TrianglePrm.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SpherePrm.cpp">
+    <ClCompile Include="Rook.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -95,16 +89,10 @@
     <ClInclude Include="Queen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CubePrm.h">
+    <ClInclude Include="Bishop.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CylinderPrm.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="TrianglePrm.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SpherePrm.h">
+    <ClInclude Include="Rook.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

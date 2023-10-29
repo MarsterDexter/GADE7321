@@ -1,9 +1,11 @@
 #pragma once
 #include "PrimativeGameObject.h"
 
-class CubePrm : public PrimativeGameObject
+class Bishop : public PrimativeGameObject
 {
-public :
+private:
+	vec3 Scale;
+public:
 	void DrawGeometry() override;
-};
 
+};
