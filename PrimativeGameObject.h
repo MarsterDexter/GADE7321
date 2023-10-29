@@ -7,12 +7,14 @@ class PrimativeGameObject
 {
 private:
 	vec3 Position;
-	vec3 Scale;
+	vec3 Scale = vec3(1, 1, 1);
+	vec3 Rotation = vec3(0, 0, 0);
 	virtual void DrawGeometry();
 
 public:
 	void SetScale(float x, float y, float z);
 	void SetPosition(float x, float y, float z);
+	void SetRotation(float x, float y, float z);
 	void Draw();
 };
 

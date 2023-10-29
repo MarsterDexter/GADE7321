@@ -1,7 +1,7 @@
-#include "GameObject.h"
+#include "PrimativeGameObject.h"
 
-class Pawn : public GameObject
+class Pawn : public PrimativeGameObject
 {
 	public:
-
+		void DrawGeometry();
 };

@@ -4,7 +4,7 @@
 
 void PrimativeGameObject::DrawGeometry()
 {
-    Draw();
+    //Put code in here when inheariting
 }
 
 void PrimativeGameObject::SetScale(float x, float y, float z)
@@ -15,6 +15,11 @@ void PrimativeGameObject::SetScale(float x, float y, float z)
 void PrimativeGameObject::SetPosition(float x, float y, float z)
 {
     Position = vec3(x, y, z);
+}
+
+void PrimativeGameObject::SetRotation(float x, float y, float z)
+{
+    Rotation = vec3(x, y, z);
 }
 
 void PrimativeGameObject::Draw()
@@ -34,6 +39,11 @@ void PrimativeGameObject::Draw()
 
         glScalef(Scale.x, Scale.y, Scale.z);
 
+
+        // rotating the object
+        glRotatef(Rotation.x, 1, 0, 0);
+        glRotatef(Rotation.y, 0, 1, 0);
+        glRotatef(Rotation.z, 0, 0, 1);
 
         DrawGeometry();
 

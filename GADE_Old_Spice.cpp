@@ -8,12 +8,42 @@
 #include "glm/glm.hpp"
 #include "Terrain.h"
 #include <math.h>
+//__Chess--Peices__//
 #include "King.h"
 #include "Queen.h"
+#include "Pawn.h"
 
 
-King* king;
-Queen* queen;
+//__White--Peices__//
+King* wking;
+Queen* wqueen;
+//__WPawn__//
+Pawn* wpawn00;
+Pawn* wpawn01;
+Pawn* wpawn02;
+Pawn* wpawn03;
+Pawn* wpawn04;
+Pawn* wpawn05;
+Pawn* wpawn06;
+Pawn* wpawn07;
+//__WPawn__//
+//__White--Peices__//
+
+//__Black--Peices__//
+King* bking;
+Queen* bqueen;
+//__BPawn__//
+Pawn* bpawn00;
+Pawn* bpawn01;
+Pawn* bpawn02;
+Pawn* bpawn03;
+Pawn* bpawn04;
+Pawn* bpawn05;
+Pawn* bpawn06;
+Pawn* bpawn07;
+//__BPawn__//
+//__Black--Peices__//
+
 Terrain* terrain;
 ChessBoard* chessboard;
 TextureManager* texturemanager;
@@ -48,8 +78,37 @@ void Display() {
     terrain->draw();
 
 
-    king->Draw();
-    queen->Draw();
+    //__White--Peices__//
+    wking->Draw();
+    wqueen->Draw();
+
+    //__WPawn__//
+    wpawn00->Draw();
+    wpawn01->Draw();
+    wpawn02->Draw();
+    wpawn03->Draw();
+    wpawn04->Draw();
+    wpawn05->Draw();
+    wpawn06->Draw();
+    wpawn07->Draw();
+    //__White--Peices__//
+    
+
+    //__Black--Peices__//
+    bking->Draw();
+    bqueen->Draw();
+
+    //__BPawn__//
+    bpawn00->Draw();
+    bpawn01->Draw();
+    bpawn02->Draw();
+    bpawn03->Draw();
+    bpawn04->Draw();
+    bpawn05->Draw();
+    bpawn06->Draw();
+    bpawn07->Draw();
+    //__BPawn__//
+    //__Black--Peices__//
 
     glutSwapBuffers();
     
@@ -113,11 +172,75 @@ void Init() {//__Initalisation__//
     
 
 
-    king = new King;
-    king->SetPosition(-1, 1, 1);
+    //__White--Peices__//
+    wking = new King;
+    glColor3f(0, 0, 0);
+    wking->SetPosition(-1, 0.5f, 1);
 
-    queen = new Queen;
-    queen->SetPosition(-1, 1, 2);
+    wqueen = new Queen;
+    wqueen->SetPosition(-1, 0.5f, 2);
+
+    //__WPawn__//
+    wpawn00 = new Pawn;
+    wpawn00->SetPosition(1,0.5f,0);
+
+    wpawn01 = new Pawn;
+    wpawn01->SetPosition(1, 0.5f, 1);
+
+    wpawn02 = new Pawn;
+    wpawn02->SetPosition(1, 0.5f, 2);
+
+    wpawn03 = new Pawn;
+    wpawn03->SetPosition(1, 0.5f, 3);
+
+    wpawn04 = new Pawn;
+    wpawn04->SetPosition(1, 0.5f, 4);
+
+    wpawn05 = new Pawn;
+    wpawn05->SetPosition(1, 0.5f, 5);
+
+    wpawn06 = new Pawn;
+    wpawn06->SetPosition(1, 0.5f, 6);
+
+    wpawn07 = new Pawn;
+    wpawn07->SetPosition(1, 0.5f, 7);
+    //__WPawn__//
+    //__White--Peices__//
+
+    //__Black--Peices__//
+    bking = new King;
+    bking->SetPosition(7, 0.5f, 5);
+
+    bqueen = new Queen;
+    bqueen->SetPosition(7, 0.5f, 4);
+    //__BPawn__//
+
+    bpawn00 = new Pawn;
+    bpawn00->SetPosition(6, 0.5f, 0);
+
+    bpawn01 = new Pawn;
+    bpawn01->SetPosition(6, 0.5f, 1);
+
+    bpawn02 = new Pawn;
+    bpawn02->SetPosition(6, 0.5f, 2);
+
+    bpawn03 = new Pawn;
+    bpawn03->SetPosition(6, 0.5f, 3);
+
+    bpawn04 = new Pawn;
+    bpawn04->SetPosition(6, 0.5f, 4);
+
+    bpawn05 = new Pawn;
+    bpawn05->SetPosition(6, 0.5f, 5);
+
+    bpawn06 = new Pawn;
+    bpawn06->SetPosition(6, 0.5f, 6);
+
+    bpawn07 = new Pawn;
+    bpawn07->SetPosition(6, 0.5f, 7);
+    //__BPawn__//
+    //__Black--Peices__//
+    
 
 
     glutKeyboardFunc(CameraSwitch); //__Gets--KeyBoard--InPut__//
@@ -148,4 +271,36 @@ void cleanUp() {
     delete texturemanager;
     delete chessboard;
     delete terrain;
+
+    //__White--Peices__//
+    delete wking;
+    delete wqueen;
+    //__WPawn__//
+    delete wpawn00;
+    delete wpawn01;
+    delete wpawn02;
+    delete wpawn03;
+    delete wpawn04;
+    delete wpawn05;
+    delete wpawn06;
+    delete wpawn07;
+    //__WPawn__//
+    //__White--Peices__//
+
+
+    //__Black--Peices__//
+    delete bqueen;
+    delete bking;
+    //__BPawn__//
+    delete bpawn00;
+    delete bpawn01;
+    delete bpawn02;
+    delete bpawn03;
+    delete bpawn04;
+    delete bpawn05;
+    delete bpawn06;
+    delete bpawn07;
+    //__BPawn__//
+    //__Black--Peices__//
+
 }
