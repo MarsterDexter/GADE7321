@@ -7,7 +7,7 @@
 
 void King::DrawGeometry()
 {
-	glColor3f(0, 0, 1);
+	
 
 	//__Cone__//
 

@@ -8,6 +8,8 @@ using namespace glm;
 
 class ChessBoard
 {
+private:
+	vec3 Position;
 	//__Sets--ChessBoard--In--An--Array__//
 	TextureCube* CCube[10][10];
 	int sizex, sizey, sizeb;
@@ -20,6 +22,9 @@ class ChessBoard
 	~ChessBoard();
 	float RandomNum(float min, float max);
 	//__Randomise--Y--Heught//
+
+
+	void SetPosition(float x, float y, float z);
 
 	void ChessBoarder();
 	//__Access--Manager__//

@@ -22,11 +22,13 @@ ChessBoard::ChessBoard(int x, int y)
 			
 		}
 	}
-
-	
-	
-	
 }
+
+void ChessBoard::SetPosition(float x, float y, float z)
+{
+	Position = vec3(x, y, z);
+}
+
 
 void ChessBoard::ChessBoarder()					//__ChessBoarder__//
 {

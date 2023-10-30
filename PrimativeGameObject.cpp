@@ -2,6 +2,7 @@
 #include <GL/freeglut.h>
 #include <iostream>
 
+
 void PrimativeGameObject::DrawGeometry()
 {
     //Put code in here when inheariting

@@ -9,11 +9,13 @@
 #include "Terrain.h"
 #include <math.h>
 //__Chess--Peices__//
+#include "PrimativeGameObject.h"
 #include "King.h"
 #include "Queen.h"
 #include "Pawn.h"
 #include "Bishop.h"
 #include "Rook.h"
+#include "Knight.h"
 
 
 //__White--Peices__//
@@ -23,6 +25,8 @@ Bishop* wbishop01;
 Bishop* wbishop02;
 Rook* wrook01;
 Rook* wrook02;
+Kinght* wkinght01;
+Kinght* wkinght02;
 
 //__WPawn__//
 Pawn* wpawn00;
@@ -41,6 +45,11 @@ King* bking;
 Queen* bqueen;
 Bishop* bbishop01;
 Bishop* bbishop02;
+Rook* brook01;
+Rook* brook02;
+Kinght* bkinght01;
+Kinght* bkinght02;
+
 //__BPawn__//
 Pawn* bpawn00;
 Pawn* bpawn01;
@@ -86,42 +95,53 @@ void Display() {
     chessboard->step(texturemanager);
     terrain->draw();
 
+    //glDisable(GL_TEXTURE_2D);
 
     //__White--Peices__//
-    wking->Draw();
-    wqueen->Draw();
-    wbishop01->Draw();
-    wbishop02->Draw();
-    wrook01->Draw();
-    wrook02->Draw();
-    //__WPawn__//
-    wpawn00->Draw();
-    wpawn01->Draw();
-    wpawn02->Draw();
-    wpawn03->Draw();
-    wpawn04->Draw();
-    wpawn05->Draw();
-    wpawn06->Draw();
-    wpawn07->Draw();
+    glColor3f(0.5f,0,1); {
+        wking->Draw();
+        wqueen->Draw();
+        wbishop01->Draw();
+        wbishop02->Draw();
+        wrook01->Draw();
+        wrook02->Draw();
+        wkinght01->Draw();
+        wkinght02->Draw();
+        //__WPawn__//
+        wpawn00->Draw();
+        wpawn01->Draw();
+        wpawn02->Draw();
+        wpawn03->Draw();
+        wpawn04->Draw();
+        wpawn05->Draw();
+        wpawn06->Draw();
+        wpawn07->Draw();
+    }
     //__White--Peices__//
     
+    glColor3f(1,0,0); {
+        //__Black--Peices__//
+        bking->Draw();
+        bqueen->Draw();
+        bbishop01->Draw();
+        bbishop02->Draw();
+        brook01->Draw();
+        brook02->Draw();
+        bkinght01->Draw();
+        bkinght02->Draw();
 
-    //__Black--Peices__//
-    bking->Draw();
-    bqueen->Draw();
-    bbishop01->Draw();
-    bbishop02->Draw();
-    //__BPawn__//
-    bpawn00->Draw();
-    bpawn01->Draw();
-    bpawn02->Draw();
-    bpawn03->Draw();
-    bpawn04->Draw();
-    bpawn05->Draw();
-    bpawn06->Draw();
-    bpawn07->Draw();
-    //__BPawn__//
-    //__Black--Peices__//
+        //__BPawn__//
+        bpawn00->Draw();
+        bpawn01->Draw();
+        bpawn02->Draw();
+        bpawn03->Draw();
+        bpawn04->Draw();
+        bpawn05->Draw();
+        bpawn06->Draw();
+        bpawn07->Draw();
+        //__BPawn__//
+        //__Black--Peices__//
+    }
 
     glutSwapBuffers();
     
@@ -187,23 +207,28 @@ void Init() {//__Initalisation__//
 
     //__White--Peices__//
     wking = new King;
-    glColor3f(0, 0, 0);
-    wking->SetPosition(-1, 0.5f, 1);
+    wking->SetPosition(0, 0.5f, 4);
 
     wqueen = new Queen;
-    wqueen->SetPosition(-1, 0.5f, 2);
+    wqueen->SetPosition(0, 0.5f, 3);
+
+    wkinght01 = new Kinght;
+    wkinght01->SetPosition(0, 0.5f, 1);
+
+    wkinght02 = new Kinght;
+    wkinght02->SetPosition(0, 0.5f, 6);
 
     wbishop01 = new Bishop;
-    wbishop01->SetPosition(-1, 0.5f, 3);
+    wbishop01->SetPosition(0, 0.5f, 2);
 
     wbishop02 = new Bishop;
-    wbishop02->SetPosition(-1, 0.5f, 0);
+    wbishop02->SetPosition(0, 0.5f, 5);
 
     wrook01 = new Rook;
-    wrook01->SetPosition(-1, 0.5f, -1);
+    wrook01->SetPosition(0, 0.5f, 1);/////////////
 
     wrook02 = new Rook;
-    wrook02->SetPosition(-1, 0.5f, 7);
+    wrook02->SetPosition(0, 0.5f, 8);
 
     //__WPawn__//
     wpawn00 = new Pawn;
@@ -234,17 +259,22 @@ void Init() {//__Initalisation__//
 
     //__Black--Peices__//
     bking = new King;
-    bking->SetPosition(7, 0.5f, 5);
+    bking->SetPosition(7, 0.5f, 4);
 
     bqueen = new Queen;
-    bqueen->SetPosition(7, 0.5f, 4);
+    bqueen->SetPosition(7, 0.5f, 3);
 
     bbishop01 = new Bishop;
-    bbishop01->SetPosition(7,3,3);
+    bbishop01->SetPosition(7,0.5f,2);
 
     bbishop02 = new Bishop;
-    bbishop02->SetPosition(7, 3, 6);
+    bbishop02->SetPosition(7, 0.5f, 5);
 
+    brook01 = new Rook;
+    brook01->SetPosition(7,0.5f,1);
+    
+    brook02 = new Rook;
+    brook02->SetPosition(7,0.5f,8);
 
     //__BPawn__//
     bpawn00 = new Pawn;
@@ -276,6 +306,7 @@ void Init() {//__Initalisation__//
 
 
     glutKeyboardFunc(CameraSwitch); //__Gets--KeyBoard--InPut__//
+
     chessboard = new ChessBoard(8,8);
     texturemanager = new TextureManager();
 
@@ -311,6 +342,8 @@ void cleanUp() {
     delete wbishop02;
     delete wrook01;
     delete wrook02;
+    delete wkinght01;
+    delete wkinght02;
     //__WPawn__//
     delete wpawn00;
     delete wpawn01;
@@ -329,6 +362,8 @@ void cleanUp() {
     delete bking;
     delete bbishop01;
     delete bbishop02;
+    delete brook01;
+    delete brook02;
     //__BPawn__//
     delete bpawn00;
     delete bpawn01;

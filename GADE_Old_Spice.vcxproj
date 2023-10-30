@@ -144,6 +144,7 @@
     <ClCompile Include="GADE_Old_Spice.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="King.cpp" />
+    <ClCompile Include="Knight.cpp" />
     <ClCompile Include="Pawn.cpp" />
     <ClCompile Include="PrimativeGameObject.cpp" />
     <ClCompile Include="Queen.cpp" />
@@ -158,6 +159,7 @@
     <ClInclude Include="ChessBoard.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="King.h" />
+    <ClInclude Include="Knight.h" />
     <ClInclude Include="Pawn.h" />
     <ClInclude Include="Pixel.h" />
     <ClInclude Include="PrimativeGameObject.h" />
