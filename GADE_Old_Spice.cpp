@@ -79,7 +79,11 @@ const int   HEIGHT = 800; //__Screen--Size__//
 int screenWidth;
 int screenHeight;
 
+float movement = 0.01f;
 
+bool startMoving = false;
+
+void MovePeice();
 void cleanUp();
 
 void Timer(int) {
@@ -143,28 +147,35 @@ void Display() {
         //__Black--Peices__//
     }
 
+    MovePeice();
+
     glutSwapBuffers();
     
 }
 
-void CameraSwitch(unsigned char key, int x, int y ) 
+void CameraSwitch(unsigned char key, int x, int y)
 {
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     gluPerspective(60, (WIDTH / HEIGHT), 0.1, 1000);
     //__Camera--Switch__//
-     switch (key)
-     {
-     case GLUT_KEY_LEFT:
-         currentCam--;
-         break;
-     case GLUT_KEY_RIGHT:
-         currentCam++;
-         break;
-     default:
-         currentCam = 0;
-     }
+    switch (key)
+    {
+    case GLUT_KEY_LEFT:
+        currentCam--;
+        break;
+    case GLUT_KEY_RIGHT:
+        currentCam++;
+        break;
+    default:
+        currentCam = 0;
+    }
 
+    if (key == ' ') 
+    {
+        startMoving = !startMoving;
+    }
+   
      cout << currentCam << endl;
 
      if (currentCam < 0)
@@ -383,5 +394,55 @@ void cleanUp() {
     delete bpawn07;
     //__BPawn__//
     //__Black--Peices__//
+}
 
+void MovePeice() 
+{
+    if (startMoving == true)
+    {
+        if (wking->GetPosition().x <= 2) 
+        {
+            wking->SetPosition(wking->GetPosition().x + movement, 0.5f, 4);
+
+            wqueen->SetPosition(wqueen->GetPosition().x + movement, 0.5f, 3);
+
+            wkinght01->SetPosition(wkinght01->GetPosition().x + movement, 0.5f, 1);
+
+            wkinght02->SetPosition(wkinght02->GetPosition().x + movement, 0.5f, 6);
+
+            wbishop01->SetPosition(wbishop01->GetPosition().x + movement, 0.5f, 2);
+
+            wbishop02->SetPosition(wbishop02->GetPosition().x + movement, 0.5f, 5);
+
+            wrook01->SetPosition(wrook01->GetPosition().x + movement, 0.5f, 1);/////////////
+
+            wrook02->SetPosition(wrook02->GetPosition().x + movement, 0.5f, 8);
+        }
+          
+    }
+    else if(startMoving == false)
+    {
+        if (wking->GetPosition().x >= 0) 
+        {
+            //__White--Peices__//
+            wking->SetPosition(wking->GetPosition().x - movement, 0.5f, 4);
+
+            wqueen->SetPosition(wqueen->GetPosition().x - movement, 0.5f, 3);
+
+            wkinght01->SetPosition(wkinght01->GetPosition().x - movement, 0.5f, 1);
+
+            wkinght02->SetPosition(wkinght02->GetPosition().x - movement, 0.5f, 6);
+
+            wbishop01->SetPosition(wbishop01->GetPosition().x - movement, 0.5f, 2);
+
+            wbishop02->SetPosition(wbishop02->GetPosition().x - movement, 0.5f, 5);
+
+            wrook01->SetPosition(wrook01->GetPosition().x - movement, 0.5f, 1);/////////////
+
+            wrook02->SetPosition(wrook02->GetPosition().x - movement, 0.5f, 8);
+        }
+       
+
+      
+    }
 }

@@ -8,6 +8,11 @@ void PrimativeGameObject::DrawGeometry()
     //Put code in here when inheariting
 }
 
+vec3 PrimativeGameObject::GetPosition()
+{
+    return Position;
+}
+
 void PrimativeGameObject::SetScale(float x, float y, float z)
 {
     Scale = vec3(x, y, z);
