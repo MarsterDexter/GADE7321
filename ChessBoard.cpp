@@ -18,10 +18,11 @@ ChessBoard::ChessBoard(int x, int y)
 			CCube[x][y] = new TextureCube();
 
 			CCube[x][y]->SetScale(vec3(1, RandomNum(0.5F, 1), 1));
-
 			
 		}
 	}
+
+	ChessBoarder();
 }
 
 void ChessBoard::SetPosition(float x, float y, float z)
@@ -32,18 +33,11 @@ void ChessBoard::SetPosition(float x, float y, float z)
 
 void ChessBoard::ChessBoarder()					//__ChessBoarder__//
 {
-	for (int x = 0; x < sizex; x++)
-	{
-		for (int y = 0; y < sizey; y++)
-		{
+	chessBoarder = new TextureCube();
+	glColor3f(0, 0, 0);
+	chessBoarder->SetScale(vec3(10, 0.5f, 10));
+	chessBoarder->setPosition(vec3(3.5F, -0.35F, 3.5F));
 
-			chessBoarder = new GameObject();
-			glColor3f(0, 0, 0);
-			chessBoarder->SetScale(vec3(9.0f, 0.5f, 9.0f));
-			chessBoarder->setPosition(vec3(0, 0, 0));
-		}
-	}
-	
 }
 
 ChessBoard::~ChessBoard()				//__ChessBoarder--Deconstructor__//
@@ -53,15 +47,10 @@ ChessBoard::~ChessBoard()				//__ChessBoarder--Deconstructor__//
 		for (int y = 0; y < sizey; y++)
 		{
 			delete CCube[x][y];
-
 		}
 	}
 
-	chessBoarder = new GameObject();
-	glColor3f(0, 0, 0);
-	chessBoarder->SetScale(vec3(9.0f, 0.5f, 9.0f));
-	chessBoarder->setPosition(vec3(0, 0, 0));
-
+	delete chessBoarder;
 }
 
 //__Randomises--Height__//
@@ -93,6 +82,18 @@ void ChessBoard::step(TextureManager* texM)
 			CCube[x][y]->setPosition(vec3(x, 0, y));
 			CCube[x][y]->draw();
 
+		}
+	}
+
+	glDisable(GL_TEXTURE_2D);
+
+	for (int x = 0; x < sizex; x++)
+	{
+		for (int y = 0; y < sizey; y++)
+		{
+			texM->useTexture("wood");
+
+			chessBoarder->draw();
 		}
 	}
 

@@ -96,13 +96,13 @@ void Display() {
 
     
     glClear(GL_COLOR_BUFFER_BIT| GL_DEPTH_BUFFER_BIT);
+    
     chessboard->step(texturemanager);
+    
     terrain->draw();
 
-    //glDisable(GL_TEXTURE_2D);
-
     //__White--Peices__//
-    glColor3f(0.5f,0,1); {
+    glColor3f(1,1,1); {
         wking->Draw();
         wqueen->Draw();
         wbishop01->Draw();
@@ -123,7 +123,7 @@ void Display() {
     }
     //__White--Peices__//
     
-    glColor3f(1,0,0); {
+    glColor3f(0,0,0); {
         //__Black--Peices__//
         bking->Draw();
         bqueen->Draw();

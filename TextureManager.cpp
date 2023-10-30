@@ -11,6 +11,7 @@ TextureManager::TextureManager()
 	textures.insert({ "black", new Texture("Textures/black.png") }); //__Black--Texture__//
 	textures.insert({ "white", new Texture("Textures/white.png") });//__White--Texture__//
 	textures.insert({ "heightMap", new Texture("Textures/Test.png") }); //__Height--Map__//
+	textures.insert({ "wood", new Texture("Textures/wood_grain.png") }); //__WOOD--GrainTexture__//
 	//Mjort
 	//heightMap
 }
