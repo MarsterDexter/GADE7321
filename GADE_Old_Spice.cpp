@@ -236,7 +236,7 @@ void Init() {//__Initalisation__//
     wbishop02->SetPosition(0, 0.5f, 5);
 
     wrook01 = new Rook;
-    wrook01->SetPosition(0, 0.5f, 1);/////////////
+    wrook01->SetPosition(0, 0.5f, 1);
 
     wrook02 = new Rook;
     wrook02->SetPosition(0, 0.5f, 8);
@@ -414,7 +414,7 @@ void MovePeice()
 
             wbishop02->SetPosition(wbishop02->GetPosition().x + movement, 0.5f, 5);
 
-            wrook01->SetPosition(wrook01->GetPosition().x + movement, 0.5f, 1);/////////////
+            wrook01->SetPosition(wrook01->GetPosition().x + movement, 0.5f, 1);
 
             wrook02->SetPosition(wrook02->GetPosition().x + movement, 0.5f, 8);
         }
@@ -437,7 +437,7 @@ void MovePeice()
 
             wbishop02->SetPosition(wbishop02->GetPosition().x - movement, 0.5f, 5);
 
-            wrook01->SetPosition(wrook01->GetPosition().x - movement, 0.5f, 1);/////////////
+            wrook01->SetPosition(wrook01->GetPosition().x - movement, 0.5f, 1);
 
             wrook02->SetPosition(wrook02->GetPosition().x - movement, 0.5f, 8);
         }
