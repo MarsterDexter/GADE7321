@@ -14,7 +14,7 @@ void Rook::DrawGeometry()
 
 
 	//__Sphere__//
-	glTranslatef(0, 0, 0.5f);
+	glTranslatef(0, 0, 0);
 	glutSolidCube(0.5f);
 }
 

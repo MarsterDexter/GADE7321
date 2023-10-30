@@ -276,6 +276,12 @@ void Init() {//__Initalisation__//
     brook02 = new Rook;
     brook02->SetPosition(7,0.5f,8);
 
+    bkinght01 = new Kinght;
+    bkinght01->SetPosition(7, 0.5f, 1);
+
+    bkinght02 = new Kinght;
+    bkinght02->SetPosition(7,0.5f, 6);
+
     //__BPawn__//
     bpawn00 = new Pawn;
     bpawn00->SetPosition(6, 0.5f, 0);
@@ -364,6 +370,8 @@ void cleanUp() {
     delete bbishop02;
     delete brook01;
     delete brook02;
+    delete bkinght01;
+    delete bkinght02;
     //__BPawn__//
     delete bpawn00;
     delete bpawn01;
