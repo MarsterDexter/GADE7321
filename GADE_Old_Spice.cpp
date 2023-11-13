@@ -17,6 +17,11 @@
 #include "Rook.h"
 #include "Knight.h"
 
+#include "Model.h"
+#define TINYOBJLOADER_IMPLEMENTATION
+#include <tinyobjloader/tiny_obj_loader.h>
+
+Model* table;
 
 //__White--Peices__//
 King* wking;
@@ -83,8 +88,11 @@ float movement = 0.01f;
 
 bool startMoving = false;
 
+
 void MovePeice();
 void cleanUp();
+
+
 
 void Timer(int) {
     glutPostRedisplay();
@@ -100,6 +108,9 @@ void Display() {
     chessboard->step(texturemanager);
     
     terrain->draw();
+
+    table->draw();
+    table->setPosition(vec3(0,0,0));
 
     //__White--Peices__//
     glColor3f(1,1,1); {
@@ -324,6 +335,9 @@ void Init() {//__Initalisation__//
 
     glutKeyboardFunc(CameraSwitch); //__Gets--KeyBoard--InPut__//
 
+    table = new Model("../Model/Table", "sandscript.png");
+    table->generateDisplayList();
+
     chessboard = new ChessBoard(8,8);
     texturemanager = new TextureManager();
 
@@ -394,6 +408,8 @@ void cleanUp() {
     delete bpawn07;
     //__BPawn__//
     //__Black--Peices__//
+
+    delete table;
 }
 
 void MovePeice() 

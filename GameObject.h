@@ -14,6 +14,8 @@ private:
 	vec3 scale = vec3(1, 1, 1);
 	virtual void drawGeometry();
 	void drawOrigin();
+	bool displayListGenerated = false;
+	uint32_t displayListId;
 
 public:
 
@@ -23,7 +25,7 @@ public:
 	vec3 getPosition();
 	vec3 normalised();
 	void draw();
-
+	void generateDisplayList();
 
 
 };

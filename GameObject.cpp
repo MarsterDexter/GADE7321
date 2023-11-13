@@ -3,6 +3,8 @@
 #include <iostream>
 #include <math.h>
 
+
+
 void GameObject::setPosition(vec3 position)
 {
 	this->position = position;
@@ -127,4 +129,16 @@ void GameObject::drawOrigin()
 	
 }
 
+void GameObject::generateDisplayList()
+{
+    displayListId = glGenLists(1);
+
+    glNewList(displayListId, GL_COMPILE);
+    {
+        drawGeometry();
+    }
+    glEndList();
+
+    displayListGenerated = true;
+}
 
