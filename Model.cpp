@@ -1,18 +1,18 @@
 #include "Model.h"
 #include <iostream>
-#include <tiny_obj_loader.h>
+#include "tinyobjloader/tiny_obj_loader.h"
 
 using namespace std;
 
 Model::Model(string path, string name)
 {
 	loadModel(path, name);
-	
+
 }
 
 Model::~Model()
 {
-	for (Texture* t : textures) 
+	for (Texture* t : textures)
 	{
 		delete t;
 	}
@@ -30,12 +30,12 @@ void Model::loadModel(std::string path, std::string name)
 	string objPath = path + "/" + name + ".obj";
 	string mtlPath = path;
 
-	if (!tinyobj::LoadObj(&attrib, &shapes, &objMaterials, &warn, &err, objPath.c_str(), mtlPath.c_str())) 
+	if (!tinyobj::LoadObj(&attrib, &shapes, &objMaterials, &warn, &err, objPath.c_str(), mtlPath.c_str()))
 	{
 		throw std::runtime_error(warn + err);
 	}
 
-	if (!warn.empty()) 
+	if (!warn.empty())
 	{
 		cout << warn << endl;
 	}
@@ -47,9 +47,9 @@ void Model::loadModel(std::string path, std::string name)
 
 	cout << "Num materials: " << objMaterials.size() << endl;
 
-	for (const auto& objMaterial : objMaterials) 
+	for (const auto& objMaterial : objMaterials)
 	{
-		if (objMaterial.diffuse_texname != "") 
+		if (objMaterial.diffuse_texname != "")
 		{
 			string texturePath = path + "/" + objMaterial.diffuse_texname;
 			Texture* texture = new Texture(texturePath.c_str());
@@ -59,17 +59,17 @@ void Model::loadModel(std::string path, std::string name)
 
 	}
 
-	for (const auto& shape : shapes) 
+	for (const auto& shape : shapes)
 	{
 		vector<Vertex> vertices;
 		vector<unsigned int> indices;
 
-		for (const auto& index : shape.mesh.indices) 
+		for (const auto& index : shape.mesh.indices)
 		{
 			Vertex vertex = {};
 
 			vertex.position =
-			vertex.position =
+				vertex.position =
 			{
 				attrib.vertices[3 * index.vertex_index + 0],
 				attrib.vertices[3 * index.vertex_index + 1],
@@ -106,6 +106,11 @@ void Model::loadModel(std::string path, std::string name)
 
 void Model::drawGeometry()
 {
+	if (displayListGenerated == true)
+	{
+		glCallList(displayListId);
+		return;
+	}
 	int shapeIndex = 0;
 
 	for (ModelPart p : parts)

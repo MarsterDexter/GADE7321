@@ -8,7 +8,7 @@ class GameObject
 
 	float originSize = 1.0f;
 
-private:
+protected:
 	vec3 position;
 	vec3 rotation;
 	vec3 scale = vec3(1, 1, 1);

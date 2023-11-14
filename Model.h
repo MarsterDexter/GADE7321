@@ -10,19 +10,19 @@ using namespace glm;
 
 class Model : public GameObject
 {
-	public:
-	
-		Model(std::string path, std::string name);
-		~Model();
+public:
 
-	private:
-		void loadModel(std::string path, std::string name);
-		void drawGeometry() override;
+	Model(std::string path, std::string name);
+	~Model();
 
-		std::vector<ModelPart> parts;
-		std::vector<Texture*> textures;
+private:
+	void loadModel(std::string path, std::string name);
+	void drawGeometry() override;
 
-		GLuint id;
-	 
+	std::vector<ModelPart> parts;
+	std::vector<Texture*> textures;
+
+	GLuint id;
+
 };
 
