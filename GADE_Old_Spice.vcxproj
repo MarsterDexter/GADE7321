@@ -145,6 +145,8 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="King.cpp" />
     <ClCompile Include="Knight.cpp" />
+    <ClCompile Include="Model.cpp" />
+    <ClCompile Include="ModelPart.cpp" />
     <ClCompile Include="Pawn.cpp" />
     <ClCompile Include="PrimativeGameObject.cpp" />
     <ClCompile Include="Queen.cpp" />
@@ -153,6 +155,7 @@
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TextureCube.cpp" />
     <ClCompile Include="TextureManager.cpp" />
+    <ClCompile Include="Vertex.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bishop.h" />
@@ -160,6 +163,8 @@
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="King.h" />
     <ClInclude Include="Knight.h" />
+    <ClInclude Include="Model.h" />
+    <ClInclude Include="ModelPart.h" />
     <ClInclude Include="Pawn.h" />
     <ClInclude Include="Pixel.h" />
     <ClInclude Include="PrimativeGameObject.h" />
@@ -169,6 +174,7 @@
     <ClInclude Include="Texture.h" />
     <ClInclude Include="TextureCube.h" />
     <ClInclude Include="TextureManager.h" />
+    <ClInclude Include="Vertex.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

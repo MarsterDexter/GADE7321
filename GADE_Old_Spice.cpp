@@ -19,7 +19,7 @@
 
 #include "Model.h"
 #define TINYOBJLOADER_IMPLEMENTATION
-#include <tinyobjloader/tiny_obj_loader.h>
+#include <tinyobjloader/tiny_obj_loader.h>                                              
 
 Model* table;
 
@@ -89,9 +89,36 @@ float movement = 0.01f;
 bool startMoving = false;
 
 
+void fpsCounter(float x, float y, const string& text);
+
 void MovePeice();
 void cleanUp();
 
+
+int frameCount = 0; // Variable to store the frame count
+int currentTime, previousTime; // Variables to calculate frame rate
+
+// Function to update the frame counter and calculate frame rate
+void updateFrameCounter() {
+    currentTime = glutGet(GLUT_ELAPSED_TIME);
+
+    float deltaTime = (currentTime - previousTime) / 1000.0f;
+
+    frameCount++;
+
+    float fps = frameCount / deltaTime;
+
+    // Convert FPS to string
+    ostringstream oss;
+    oss << "FPS: " << fps;
+
+    // Set color and render text in screen space
+    glColor3f(1, 1, 1);
+    fpsCounter(10, 10, oss.str());
+
+    previousTime = currentTime;
+    frameCount = 0;
+}
 
 
 void Timer(int) {
@@ -105,12 +132,15 @@ void Display() {
     
     glClear(GL_COLOR_BUFFER_BIT| GL_DEPTH_BUFFER_BIT);
     
+    // Update the frame counter
+    updateFrameCounter();
+
+
     chessboard->step(texturemanager);
     
     terrain->draw();
 
     table->draw();
-    table->setPosition(vec3(0,0,0));
 
     //__White--Peices__//
     glColor3f(1,1,1); {
@@ -159,9 +189,15 @@ void Display() {
     }
 
     MovePeice();
-
+    updateFrameCounter();
     glutSwapBuffers();
     
+}
+
+// Idle function - continuously called when the system is idle
+void idle() {
+    // Trigger a redraw to update the frame counter
+    glutPostRedisplay();
 }
 
 void CameraSwitch(unsigned char key, int x, int y)
@@ -335,8 +371,10 @@ void Init() {//__Initalisation__//
 
     glutKeyboardFunc(CameraSwitch); //__Gets--KeyBoard--InPut__//
 
-    table = new Model("../Model/Table", "sandscript.png");
+    table = new Model("Model/Table", "Table");                  
     table->generateDisplayList();
+    table->setPosition(vec3(1,0,1));
+    table->SetScale(vec3(5,5,5));
 
     chessboard = new ChessBoard(8,8);
     texturemanager = new TextureManager();
@@ -344,6 +382,34 @@ void Init() {//__Initalisation__//
     terrain = new Terrain(texturemanager->getTexture("heightMap"), 50, 5);
     terrain->setPosition(vec3(0,-5,-20));
 }
+
+void fpsCounter(float x, float y , const string& text) 
+{
+    glMatrixMode(GL_PROJECTION);
+    glPushMatrix();
+    glLoadIdentity();
+    gluOrtho2D(0, glutGet(GLUT_WINDOW_WIDTH), 0, glutGet(GLUT_WINDOW_HEIGHT));
+
+    glMatrixMode(GL_MODELVIEW);
+    glPushMatrix();
+    glLoadIdentity();
+
+    glRasterPos2f(x, y);
+
+    for (char chartext : text)
+    {
+        glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, chartext);
+    }
+
+    glPopMatrix();
+
+    glMatrixMode(GL_PROJECTION);
+    glPopMatrix();
+
+    glMatrixMode(GL_MODELVIEW);
+
+}
+
 
 int main(int argc, char * argv[])
 {
@@ -358,7 +424,13 @@ int main(int argc, char * argv[])
     Init();                                                     //__Initalizing--gameObjects(Awake method)__//
     glutDisplayFunc(Display);
     glutTimerFunc(0,Timer,0);
+    glutIdleFunc(idle);
+
+    // Set the initial time for frame rate calculation
+    previousTime = glutGet(GLUT_ELAPSED_TIME);
+
     glutMainLoop();
+    return 0;
 }
 
 void cleanUp() {
