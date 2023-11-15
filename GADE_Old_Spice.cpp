@@ -5,7 +5,6 @@
 #include "TextureManager.h"
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb/stb_image.h"
-#include "glm/glm.hpp"
 #include "Terrain.h"
 #include <math.h>
 //__Chess--Peices__//
@@ -19,7 +18,11 @@
 
 #include "Model.h"
 #define TINYOBJLOADER_IMPLEMENTATION
-#include <tinyobjloader/tiny_obj_loader.h>                                              
+#include <tinyobjloader/tiny_obj_loader.h> 
+#include "Camera.h"
+#include "glm/glm.hpp"
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 Model* table;
 
@@ -70,6 +73,10 @@ Pawn* bpawn07;
 Terrain* terrain;
 ChessBoard* chessboard;
 TextureManager* texturemanager;
+
+Camera camera(1600, 800);
+
+
 vec3 camArray[3]
 {
     vec3(-10, 10, -10),
@@ -98,6 +105,18 @@ void cleanUp();
 int frameCount = 0; // Variable to store the frame count
 int currentTime, previousTime; // Variables to calculate frame rate
 
+
+void mouse_callback(int xpos, int ypos) {
+    
+
+    camera.ProcessMouseMovement(xpos,ypos);
+}
+
+void keyboard_callback(unsigned char key, int x, int y) {
+    camera.ProcessInput(key, x, y);
+    glutPostRedisplay();
+    
+}
 // Function to update the frame counter and calculate frame rate
 void updateFrameCounter() {
     currentTime = glutGet(GLUT_ELAPSED_TIME);
@@ -131,7 +150,8 @@ void Display() {
 
     
     glClear(GL_COLOR_BUFFER_BIT| GL_DEPTH_BUFFER_BIT);
-    
+    glMatrixMode(GL_MODELVIEW);
+    glLoadMatrixf(glm::value_ptr(camera.GetViewMatrix()));
     // Update the frame counter
     updateFrameCounter();
 
@@ -193,6 +213,8 @@ void Display() {
     glutSwapBuffers();
     
 }
+
+
 
 // Idle function - continuously called when the system is idle
 void idle() {
@@ -369,12 +391,12 @@ void Init() {//__Initalisation__//
     
 
 
-    glutKeyboardFunc(CameraSwitch); //__Gets--KeyBoard--InPut__//
+   // glutKeyboardFunc(CameraSwitch); //__Gets--KeyBoard--InPut__//
 
     table = new Model("Model/Table", "Table");                  
     table->generateDisplayList();
-    table->setPosition(vec3(1,0,1));
-    table->SetScale(vec3(5,5,5));
+    table->setPosition(vec3(1,-18,1));
+    table->SetScale(vec3(10,10,10));
 
     chessboard = new ChessBoard(8,8);
     texturemanager = new TextureManager();
@@ -425,6 +447,9 @@ int main(int argc, char * argv[])
     glutDisplayFunc(Display);
     glutTimerFunc(0,Timer,0);
     glutIdleFunc(idle);
+
+    glutPassiveMotionFunc(mouse_callback);
+    glutKeyboardFunc(keyboard_callback);
 
     // Set the initial time for frame rate calculation
     previousTime = glutGet(GLUT_ELAPSED_TIME);
