@@ -28,6 +28,7 @@ Model* table;
 Model* boat;
 Model* water;
 Model* sky;
+Model* brassscale;
 //__White--Peices__//
 King* wking;
 Queen* wqueen;
@@ -163,14 +164,18 @@ void Display() {
     terrain->draw();
    // texturemanager->useTexture("Table");
     table->draw();
+
     texturemanager->useTexture("Boat");
     boat->draw();
 
-    water->draw();
     texturemanager->useTexture("water");
+    water->draw();
 
-    sky->draw();
     texturemanager->useTexture("sky");
+    sky->draw();
+
+    texturemanager->useTexture("scale");
+    brassscale->draw();
     
     //__White--Peices__//
     glColor3f(1,1,1); {
@@ -405,23 +410,29 @@ void Init() {//__Initalisation__//
 
     table = new Model("Model/Table", "Table");                  
     table->generateDisplayList();
-    table->setPosition(vec3(5,-35,5));
-    table->SetScale(vec3(20,20,20));
+    table->setPosition(vec3(4,-16.5f,4));
+    table->SetScale(vec3(10,10,10));
 
     boat = new Model("Model/Boat", "boat");
     boat->generateDisplayList();
-    boat->setPosition(vec3(1, -80, 1));
-    boat->SetScale(vec3(20,20,20));
+    boat->setPosition(vec3(4, -45, 4));
+    boat->SetScale(vec3(10,10,10));
 
     water = new Model("Model/water", "water");
     water->generateDisplayList();
-    water->setPosition(vec3(1, -80, 1));
+    water->setPosition(vec3(4, -50, 4));
     water->SetScale(vec3(20, 20, 20));
 
     sky = new Model("Model/sky", "sky");
     sky->generateDisplayList();
-    sky->setPosition(vec3(1, -80, 1));
-    sky->SetScale(vec3(50,50,50));
+    sky->setPosition(vec3(4, -50, 4));
+    sky->SetScale(vec3(500,500,500));
+
+
+    brassscale = new Model("Model/scale", "scale");
+    brassscale->generateDisplayList();
+    brassscale->setPosition(vec3(4, 0, 11));
+    brassscale->SetScale(vec3(0.1f,0.1f,0.1f));
 
     chessboard = new ChessBoard(8,8);
     texturemanager = new TextureManager();
@@ -535,6 +546,7 @@ void cleanUp() {
     delete boat;
     delete water;
     delete sky;
+    delete brassscale;
 }
 
 void MovePeice() 

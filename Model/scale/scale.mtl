@@ -1,0 +1,12 @@
+# Blender 3.6.5 MTL File: 'scale.blend'
+# www.blender.org
+
+newmtl Material.001
+Ns 401.776306
+Ka 0.842520 0.842520 0.842520
+Ks 0.185039 0.185039 0.185039
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:/Users/dekli/Desktop/Portfoilio work/Egypt/brass.jpg

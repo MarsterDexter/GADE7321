@@ -18,6 +18,7 @@ TextureManager::TextureManager()
 	textures.insert({ "Table", new Texture("Model/Table/Table.jpg") }); //__Table--Texture__//
 	textures.insert({ "water", new Texture("Model/water/water.jpg") }); //__Table--Texture__//
 	textures.insert({ "sky", new Texture("Model/sky/sky.jpg") }); //__Table--Texture__//
+	textures.insert({ "scale", new Texture("Model/scale/scale.jpg") }); //__Table--Texture__//
 	
 }
 
