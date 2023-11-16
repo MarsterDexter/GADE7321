@@ -12,6 +12,12 @@ TextureManager::TextureManager()
 	textures.insert({ "white", new Texture("Textures/white.png") });//__White--Texture__//
 	textures.insert({ "heightMap", new Texture("Textures/Test.png") }); //__Height--Map__//
 	textures.insert({ "wood", new Texture("Textures/wood_grain.png") }); //__Wood--GrainTexture__//
+
+
+	textures.insert({ "Boat", new Texture("Model/Boat/boat.jpg") }); //__Boat--Texture__//
+	textures.insert({ "Table", new Texture("Model/Table/Table.jpg") }); //__Table--Texture__//
+	textures.insert({ "water", new Texture("Model/water/water.jpg") }); //__Table--Texture__//
+	textures.insert({ "sky", new Texture("Model/sky/sky.jpg") }); //__Table--Texture__//
 	
 }
 

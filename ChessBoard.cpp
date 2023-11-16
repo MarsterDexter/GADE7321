@@ -1,6 +1,7 @@
 #include "ChessBoard.h"
 #include "GL\freeglut.h"
 #include <random>
+#include "GameObject.h"
 
 GameObject* chessBoarder;
 

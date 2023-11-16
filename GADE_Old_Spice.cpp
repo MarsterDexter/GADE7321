@@ -26,6 +26,8 @@
 
 Model* table;
 Model* boat;
+Model* water;
+Model* sky;
 //__White--Peices__//
 King* wking;
 Queen* wqueen;
@@ -159,9 +161,17 @@ void Display() {
     chessboard->step(texturemanager);
     
     terrain->draw();
-
+   // texturemanager->useTexture("Table");
     table->draw();
+    texturemanager->useTexture("Boat");
     boat->draw();
+
+    water->draw();
+    texturemanager->useTexture("water");
+
+    sky->draw();
+    texturemanager->useTexture("sky");
+    
     //__White--Peices__//
     glColor3f(1,1,1); {
         wking->Draw();
@@ -395,13 +405,23 @@ void Init() {//__Initalisation__//
 
     table = new Model("Model/Table", "Table");                  
     table->generateDisplayList();
-    table->setPosition(vec3(1,-18,1));
-    table->SetScale(vec3(10,10,10));
+    table->setPosition(vec3(5,-35,5));
+    table->SetScale(vec3(20,20,20));
 
     boat = new Model("Model/Boat", "boat");
     boat->generateDisplayList();
-    boat->setPosition(vec3(1, -20, 1));
-    boat->SetScale(vec3(10, 10, 10));
+    boat->setPosition(vec3(1, -80, 1));
+    boat->SetScale(vec3(20,20,20));
+
+    water = new Model("Model/water", "water");
+    water->generateDisplayList();
+    water->setPosition(vec3(1, -80, 1));
+    water->SetScale(vec3(20, 20, 20));
+
+    sky = new Model("Model/sky", "sky");
+    sky->generateDisplayList();
+    sky->setPosition(vec3(1, -80, 1));
+    sky->SetScale(vec3(50,50,50));
 
     chessboard = new ChessBoard(8,8);
     texturemanager = new TextureManager();
@@ -513,6 +533,8 @@ void cleanUp() {
 
     delete table;
     delete boat;
+    delete water;
+    delete sky;
 }
 
 void MovePeice() 
