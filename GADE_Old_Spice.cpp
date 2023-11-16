@@ -25,7 +25,7 @@
 #include <glm/gtc/type_ptr.hpp>
 
 Model* table;
-
+Model* boat;
 //__White--Peices__//
 King* wking;
 Queen* wqueen;
@@ -161,7 +161,7 @@ void Display() {
     terrain->draw();
 
     table->draw();
-
+    boat->draw();
     //__White--Peices__//
     glColor3f(1,1,1); {
         wking->Draw();
@@ -398,11 +398,16 @@ void Init() {//__Initalisation__//
     table->setPosition(vec3(1,-18,1));
     table->SetScale(vec3(10,10,10));
 
+    boat = new Model("Model/Boat", "boat");
+    boat->generateDisplayList();
+    boat->setPosition(vec3(1, -20, 1));
+    boat->SetScale(vec3(10, 10, 10));
+
     chessboard = new ChessBoard(8,8);
     texturemanager = new TextureManager();
 
     terrain = new Terrain(texturemanager->getTexture("heightMap"), 50, 5);
-    terrain->setPosition(vec3(0,-5,-20));
+    terrain->setPosition(vec3(0,-20,-20));
 }
 
 void fpsCounter(float x, float y , const string& text) 
@@ -507,6 +512,7 @@ void cleanUp() {
     //__Black--Peices__//
 
     delete table;
+    delete boat;
 }
 
 void MovePeice() 

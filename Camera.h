@@ -22,7 +22,7 @@ public:
     }
 
     glm::mat4 GetProjectionMatrix() {
-        //16.0F/9.0F -> 16:9 Aspect
+
         return glm::perspective(glm::radians(fov), (float)screenWidth / (float)screenHeight, 0.01f, 5000.0F);
     }
 
