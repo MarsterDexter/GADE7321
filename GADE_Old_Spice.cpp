@@ -36,6 +36,7 @@ Model* anbusBust;
 Light* pointLight;
 Light* directionalLight;
 Light* spotLight;
+
 //__White--Peices__//
 King* wking;
 Queen* wqueen;
@@ -169,7 +170,7 @@ void Display() {
     chessboard->step(texturemanager);
     
     terrain->draw();
-   // texturemanager->useTexture("Table");
+
     table->draw();
 
     texturemanager->useTexture("Boat");
@@ -463,7 +464,7 @@ void Init() {//__Initalisation__//
     texturemanager = new TextureManager();
 
     terrain = new Terrain(texturemanager->getTexture("heightMap"), 50, 5);
-    terrain->setPosition(vec3(0,-60,-20));
+    terrain->setPosition(vec3(0,-80,-20));
 
     directionalLight = new Light();
     directionalLight->init();
