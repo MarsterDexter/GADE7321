@@ -23,12 +23,19 @@
 #include "glm/glm.hpp"
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+#include "Light.h"
 
 Model* table;
 Model* boat;
 Model* water;
 Model* sky;
 Model* brassscale;
+Model* osirisBust;
+Model* anbusBust;
+
+Light* pointLight;
+Light* directionalLight;
+Light* spotLight;
 //__White--Peices__//
 King* wking;
 Queen* wqueen;
@@ -176,6 +183,13 @@ void Display() {
 
     texturemanager->useTexture("scale");
     brassscale->draw();
+
+    texturemanager->useTexture("osiris");
+    osirisBust->draw();
+
+    
+    texturemanager->useTexture("anbus");
+    anbusBust->draw();
     
     //__White--Peices__//
     glColor3f(1,1,1); {
@@ -428,17 +442,50 @@ void Init() {//__Initalisation__//
     sky->setPosition(vec3(4, -50, 4));
     sky->SetScale(vec3(500,500,500));
 
-
     brassscale = new Model("Model/scale", "scale");
     brassscale->generateDisplayList();
     brassscale->setPosition(vec3(4, 0, 11));
     brassscale->SetScale(vec3(0.1f,0.1f,0.1f));
 
+    osirisBust = new Model("Model/osiris", "osiris");
+    osirisBust->generateDisplayList();
+    osirisBust->setPosition(vec3(-14, -4, 4));
+    osirisBust->SetScale(vec3(3,3,3));
+    osirisBust->setRotation(vec3(0,-90,0));
+
+    anbusBust = new Model("Model/anbus", "anbus");
+    anbusBust->generateDisplayList();
+    anbusBust->setPosition(vec3(18, -7, 4));
+    anbusBust->SetScale(vec3(4.5f,4.5f,4.5f));
+    anbusBust->setRotation(vec3(0, 90, 0));
+    
     chessboard = new ChessBoard(8,8);
     texturemanager = new TextureManager();
 
     terrain = new Terrain(texturemanager->getTexture("heightMap"), 50, 5);
-    terrain->setPosition(vec3(0,-20,-20));
+    terrain->setPosition(vec3(0,-60,-20));
+
+    directionalLight = new Light();
+    directionalLight->init();
+    directionalLight->setAmbient(vec4(0, 0, 0, 0));
+    directionalLight->setDiffuse(vec4(0, 0, 0, 0));
+    directionalLight->setSpecular(vec4(0, 0, 0, 0));
+    directionalLight->setPosition(vec4(0,0,0,0));
+
+    pointLight = new Light();
+    pointLight->init();
+    pointLight->setAmbient(vec4(0, 0, 0, 0));
+    pointLight->setDiffuse(vec4(0, 0, 0, 0));
+    pointLight->setSpecular(vec4(0, 0, 0, 0));
+    pointLight->setPosition(vec4(0, 0, 0, 0));
+
+    spotLight = new Light();
+    spotLight->init();
+    spotLight->setAmbient(vec4(0, 0, 0, 0));
+    spotLight->setDiffuse(vec4(0, 0, 0, 0));
+    spotLight->setSpecular(vec4(0, 0, 0, 0));
+    spotLight->setPosition(vec4(0, 0, 0, 0));
+
 }
 
 void fpsCounter(float x, float y , const string& text) 
@@ -483,11 +530,13 @@ int main(int argc, char * argv[])
     glutDisplayFunc(Display);
     glutTimerFunc(0,Timer,0);
     glutIdleFunc(idle);
-
+    //__Calls--Mouse--InPut__//
     glutPassiveMotionFunc(mouse_callback);
+
+    //__Calls--Keyboard--InPut__//
     glutKeyboardFunc(keyboard_callback);
 
-    // Set the initial time for frame rate calculation
+    //__Set--The--Initial--Frame--Rate--Calculation__//
     previousTime = glutGet(GLUT_ELAPSED_TIME);
 
     glutMainLoop();
@@ -547,6 +596,8 @@ void cleanUp() {
     delete water;
     delete sky;
     delete brassscale;
+    delete osirisBust;
+    delete anbusBust;
 }
 
 void MovePeice() 
